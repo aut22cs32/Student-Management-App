@@ -69,3 +69,49 @@
   font-size: 14px;
   margin-top: 4px;
 }
+
+
+.btn-add,
+.btn-update,
+.btn-cancel {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 4px;
+  transition: background-color 0.2s ease,
+              transform 0.2s ease;
+}
+
+.btn-add {
+  background-color: #16a34a;
+}
+
+.btn-add:hover {
+  background-color: #15803d;
+}
+
+.btn-update {
+  background-color: #2563eb;
+}
+
+.btn-update:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-cancel {
+  background-color: #6b7280;
+}
+
+.btn-cancel:hover {
+  background-color: #4b5563;
+}
+
+.btn-add:hover,
+.btn-update:hover,
+.btn-cancel:hover {
+  transform: translateY(-1px);
+}

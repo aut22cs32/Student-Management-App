@@ -51,3 +51,40 @@
 .student-card button:last-child {
   background: #dc2626;
 }
+
+
+
+.btn-edit,
+.btn-delete {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 4px;
+  transition: background-color 0.2s ease,
+              transform 0.2s ease;
+}
+
+.btn-edit {
+  background-color: #f59e0b;
+}
+
+.btn-edit:hover {
+  background-color: #d97706;
+}
+
+.btn-delete {
+  background-color: #dc2626;
+}
+
+.btn-delete:hover {
+  background-color: #b91c1c;
+}
+
+.btn-edit:hover,
+.btn-delete:hover {
+  transform: translateY(-1px);
+}
