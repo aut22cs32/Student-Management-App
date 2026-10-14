@@ -1,0 +1,266 @@
+
+/* General page styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+/* Main layout */
+.app-container {
+  display: grid;
+  grid-template-columns: 350px minmax(0, 1fr);
+  gap: 25px;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  align-items: start;
+}
+
+/* Student form section */
+.form-section {
+  background-color: #ffffff;
+  padding: 25px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Student list section */
+.students-section {
+  min-width: 0;
+  background-color: #ffffff;
+  padding: 25px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.students-section h2 {
+  margin-top: 0;
+  color: #1d4ed8;
+}
+
+.students-section p {
+  color: #374151;
+  font-size: 16px;
+}
+
+/* Search input */
+.students-section input {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.students-section input:focus {
+  outline: 2px solid #93c5fd;
+  border-color: #2563eb;
+}
+
+/* Student cards layout */
+.student-list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 250px), 1fr)
+  );
+  gap: 18px;
+}
+
+/* Success message */
+.success-message {
+  max-width: 1160px;
+  margin: 20px auto 0;
+  padding: 12px 16px;
+  color: #166534;
+  background-color: #dcfce7;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+}
+
+/* Responsive layout for tablets and phones */
+@media (max-width: 768px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+
+  .form-section,
+  .students-section {
+    padding: 18px;
+  }
+
+  .success-message {
+    margin: 15px;
+  }
+}
+
+
+
+.main-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 18px;
+  background-color: #1d4ed8;
+}
+
+.main-navigation a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.main-navigation a:hover {
+  text-decoration: underline;
+}
+
+
+.main-navigation {
+  display: flex;
+  gap: 20px;
+  padding: 16px 24px;
+  background-color: #1e293b;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+.nav-link:hover {
+  background-color: #334155;
+}
+
+.nav-link.active {
+  background-color: #2563eb;
+  color: white;
+  font-weight: bold;
+}
+
+
+
+.course-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.course-row:last-child {
+  border-bottom: none;
+}
+
+.course-count {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.dashboard-page .dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.dashboard-page .stat-card {
+  display: flex;
+  align-items: center;
+  padding: 22px;
+  border: 1px solid #e1e9f5;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #142b50;
+}
+
+.dashboard-page .stat-card p {
+  margin: 0 0 8px;
+  color: #526783;
+  font-size: 14px;
+}
+
+.dashboard-page .stat-card h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+@media (max-width: 900px) {
+  .dashboard-page .dashboard-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-page .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-page .stat-card {
+  padding: 24px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #dbe3ef;
+  border-left: 5px solid #2563eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-page .stat-blue {
+  background: #e0f2fe;
+  border-left-color: #0284c7;
+}
+
+.dashboard-page .stat-green {
+  background: #dcfce7;
+  border-left-color: #16a34a;
+}
+
+.dashboard-page .stat-purple {
+  background: #f3e8ff;
+  border-left-color: #9333ea;
+}
+
+.dashboard-page .stat-card p {
+  color: #334155;
+  margin: 0 0 8px;
+}
+
+.dashboard-page .stat-card h2 {
+  color: #0369a1;
+  font-size: 32px;
+  margin: 0;
+}
+
+.stat-green h2 {
+  color: #15803d;
+}
+
+.stat-purple h2 {
+  color: #7e22ce;
+}
+
+.dashboard-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
