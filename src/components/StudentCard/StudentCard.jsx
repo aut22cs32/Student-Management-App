@@ -1,12 +1,13 @@
 import "./StudentCard.css";
-function StudentCard({ id,name, age, course, onEdit, onDelete }) {
+function StudentCard({ id, name, age, position, course, onEdit, onDelete }) {
+  const employeePosition = position ?? course;
   return (
     <div className="student-card">
 
       <div className="student-info">
      
       <p>
-        <span id="left-align">Id: </span>{id}
+        <span id="left-align">Employee ID: </span>{id}
       </p>
 
       <p>
@@ -18,7 +19,7 @@ function StudentCard({ id,name, age, course, onEdit, onDelete }) {
       </p>
 
       <p>
-        <span id="left-align">Course: </span>{course}
+        <span id="left-align">Position: </span>{employeePosition}
       </p>
 
       </div>

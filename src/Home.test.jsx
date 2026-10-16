@@ -1,82 +1,71 @@
-
 import { render, screen, within } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import Home from "./pages/Home";
+
+function renderHome() {
+  return render(
+    <MemoryRouter>
+      <Home />
+    </MemoryRouter>
+  );
+}
 
 beforeEach(() => {
   localStorage.clear();
-
   localStorage.setItem(
     "students",
     JSON.stringify([
-      {
-        id: 1,
-        name: "Pavithran",
-        age: 22,
-        course: "Computer Science",
-      },
-      {
-        id: 2,
-        name: "Arun",
-        age: 21,
-        course: "Information Technology",
-      },
-      {
-        id: 3,
-        name: "Rahul",
-        age: 22,
-        course: "Computer Science",
-      },
+      { id: 1, name: "Arun", age: 21, position: "Designer" },
+      { id: 2, name: "Rahul", age: 22, position: "Developer" },
+      { id: 3, name: "Maya", age: 25, position: "Designer" },
     ])
   );
 });
 
-describe("Home Dashboard Tests", () => {
-  test("displays the dashboard heading", () => {
-    render(<Home />);
+describe("Employee dashboard", () => {
+  test("shows the dashboard heading and employee actions", () => {
+    renderHome();
 
-    expect(
-      screen.getByRole("heading", { name: "Student Dashboard" })
-    ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Dashboard" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Add Employee Form/ })).toHaveAttribute(
+      "href",
+      "/employees/add"
+    );
+    expect(screen.getByRole("link", { name: /Employee Cards/ })).toHaveAttribute(
+      "href",
+      "/employees/cards"
+    );
   });
 
-  test("displays the correct total students count", () => {
-    render(<Home />);
+  test("shows employee and position totals", () => {
+    renderHome();
 
-    const studentCard = screen
-      .getByText("Total Students")
-      .closest(".stat-card");
+    const totalEmployeesCard = screen.getByText("Total Employees").closest(".stat-card");
+    const totalPositionsCard = screen.getByText("Total Positions").closest(".stat-card");
 
-    expect(within(studentCard).getByRole("heading", { name: "3" }))
-      .toBeInTheDocument();
+    expect(within(totalEmployeesCard).getByRole("heading", { name: "3" })).toBeInTheDocument();
+    expect(within(totalPositionsCard).getByRole("heading", { name: "2" })).toBeInTheDocument();
   });
 
-  test("displays the correct total courses count", () => {
-    render(<Home />);
+  test("shows employee counts grouped by position", () => {
+    renderHome();
 
-    const courseCard = screen
-      .getByText("Total Courses")
-      .closest(".stat-card");
-
-    expect(within(courseCard).getByRole("heading", { name: "2" }))
-      .toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Employees by Position" })).toBeInTheDocument();
+    expect(screen.getByText("Designer")).toBeInTheDocument();
+    expect(screen.getByText("2 employees")).toBeInTheDocument();
+    expect(screen.getByText("Developer")).toBeInTheDocument();
+    expect(screen.getByText("1 employee")).toBeInTheDocument();
   });
 
-  test("displays course-wise student counts", () => {
-    render(<Home />);
+  test("supports older saved records that use the course field", () => {
+    localStorage.setItem(
+      "students",
+      JSON.stringify([{ id: 4, name: "Kumar", age: 23, course: "Accountant" }])
+    );
 
-    expect(screen.getByText("Course-wise Students"))
-      .toBeInTheDocument();
+    renderHome();
 
-    expect(screen.getByText("Computer Science"))
-      .toBeInTheDocument();
-
-    expect(screen.getByText("2 students"))
-      .toBeInTheDocument();
-
-    expect(screen.getByText("Information Technology"))
-      .toBeInTheDocument();
-
-    expect(screen.getByText("1 students"))
-      .toBeInTheDocument();
+    expect(screen.getByText("Accountant")).toBeInTheDocument();
+    expect(screen.getByText("1 employee")).toBeInTheDocument();
   });
 });

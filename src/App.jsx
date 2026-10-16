@@ -1,4 +1,3 @@
-
 import {
   BrowserRouter,
   Routes,
@@ -9,44 +8,32 @@ import {
 
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Students from "./pages/Students";
-
+import Employees from "./pages/Students";
 import "./App.css";
 
 function App() {
   return (
     <BrowserRouter>
-      
-<nav className="main-navigation">
-  <NavLink
-    to="/home"
-    className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-  >
-    Home
-  </NavLink>
-
-  <NavLink
-    to="/students"
-    className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-  >
-    Students
-  </NavLink>
-
-  <NavLink
-    to="/about"
-    className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-  >
-    About
-  </NavLink>
-</nav>
-
+      <nav className="main-navigation" aria-label="Main navigation">
+        <NavLink to="/home" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+          Home
+        </NavLink>
+        <NavLink to="/about" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+          About
+        </NavLink>
+      </nav>
 
       <Routes>
         <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/students" element={<Students />} />
+        <Route path="/students" element={<Navigate to="/employees/cards" replace />} />
+        <Route path="/employees" element={<Navigate to="/employees/cards" replace />} />
+        <Route path="/employees/add" element={<Employees view="form" />} />
+        <Route path="/employees/cards" element={<Employees view="cards" />} />
         <Route path="/about" element={<About />} />
+        <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
+
     </BrowserRouter>
   );
 }
