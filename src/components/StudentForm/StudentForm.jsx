@@ -11,34 +11,32 @@ export default function StudentForm({
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
-  const [course, setCourse] = useState("");
+  const [position, setPosition] = useState("");
   const [errors, setErrors] = useState({});
 
   const isEditing = Boolean(editingStudent);
 
-  // Edit mode-la existing details fill pannum
   useEffect(() => {
     if (editingStudent) {
       setId(String(editingStudent.id ?? ""));
       setName(editingStudent.name ?? "");
       setAge(String(editingStudent.age ?? ""));
-      setCourse(editingStudent.course ?? "");
+      setPosition(editingStudent.position ?? editingStudent.course ?? "");
     } else {
       setId("");
       setName("");
       setAge("");
-      setCourse("");
+      setPosition("");
     }
 
     setErrors({});
   }, [editingStudent]);
 
-  // Form validation
   function validateForm() {
     const newErrors = {};
 
     if (id.trim() === "" || Number(id) <= 0) {
-      newErrors.id = "Enter a valid Student ID";
+      newErrors.id = "Enter a valid Employee ID";
     }
 
     if (!name.trim()) {
@@ -49,8 +47,8 @@ export default function StudentForm({
       newErrors.age = "Age is required";
     }
 
-    if (!course.trim()) {
-      newErrors.course = "Course is required";
+    if (!position.trim()) {
+      newErrors.position = "Position is required";
     }
 
     setErrors(newErrors);
@@ -58,7 +56,6 @@ export default function StudentForm({
     return Object.keys(newErrors).length === 0;
   }
 
-  // Add / Update student
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -66,29 +63,35 @@ export default function StudentForm({
       return;
     }
 
-    const studentData = {
+    const employeeData = {
       id: Number(id),
       name: name.trim(),
       age: Number(age),
-      course: course.trim(),
+      position: position.trim(),
     };
 
     if (isEditing) {
-      onUpdateStudent(studentData);
+      onUpdateStudent(employeeData);
     } else {
-      onAddStudent(studentData);
+      const added = onAddStudent(employeeData);
+      if (added !== false) {
+        setId("");
+        setName("");
+        setAge("");
+        setPosition("");
+      }
     }
   }
 
   return (
     <div className="student-form">
-      <h2>{isEditing ? "Edit Student" : "Add Student"}</h2>
+      <h2>{isEditing ? "Edit Employee" : "Add Employee"}</h2>
 
       <form onSubmit={handleSubmit} noValidate>
         <div className="form-group">
-          <label htmlFor="student-id">Id:</label>
+          <label htmlFor="employee-id">Employee ID:</label>
           <input
-            id="student-id"
+            id="employee-id"
             type="number"
             value={id}
             onChange={(event) => setId(event.target.value)}
@@ -99,9 +102,9 @@ export default function StudentForm({
         </div>
 
         <div className="form-group">
-          <label htmlFor="student-name">Name:</label>
+          <label htmlFor="employee-name">Name:</label>
           <input
-            id="student-name"
+            id="employee-name"
             type="text"
             value={name}
             onChange={(event) => setName(event.target.value)}
@@ -112,9 +115,9 @@ export default function StudentForm({
         </div>
 
         <div className="form-group">
-          <label htmlFor="student-age">Age:</label>
+          <label htmlFor="employee-age">Age:</label>
           <input
-            id="student-age"
+            id="employee-age"
             type="number"
             value={age}
             onChange={(event) => setAge(event.target.value)}
@@ -125,25 +128,25 @@ export default function StudentForm({
         </div>
 
         <div className="form-group">
-          <label htmlFor="student-course">Course:</label>
+          <label htmlFor="employee-position">Position:</label>
           <input
-            id="student-course"
+            id="employee-position"
             type="text"
-            value={course}
-            onChange={(event) => setCourse(event.target.value)}
+            value={position}
+            onChange={(event) => setPosition(event.target.value)}
           />
-          {errors.course && (
-            <p className="error">{errors.course}</p>
+          {errors.position && (
+            <p className="error">{errors.position}</p>
           )}
         </div>
 
         <button type="submit">
-          {isEditing ? "Update Student" : "Add Student"}
+          {isEditing ? "Update Employee" : "Add Employee"}
         </button>
 
         {isEditing && (
           <button type="button" onClick={onCancelEdit}>
-            Cancel Edit
+            Cancel
           </button>
         )}
       </form>

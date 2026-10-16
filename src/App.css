@@ -264,3 +264,332 @@ body {
   color: #1e293b;
   margin-bottom: 20px;
 }
+
+/* Employee dashboard and page layouts */
+#root {
+  width: min(100%, 1240px);
+  text-align: left;
+  background: #f5f7fb;
+}
+
+.main-navigation {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  min-height: 68px;
+  padding: 12px clamp(18px, 5vw, 64px);
+  background: #14243b;
+}
+
+.nav-link {
+  font-size: 14px;
+  transition: background-color 160ms ease;
+}
+
+.dashboard-page,
+.employee-form-page,
+.employee-cards-page,
+.about-page {
+  width: min(100% - 40px, 1040px);
+  margin: 0 auto;
+}
+
+.dashboard-page {
+  padding: 38px 0 80px;
+}
+
+.welcome-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 28px;
+  padding: clamp(24px, 5vw, 42px);
+  border-radius: 20px;
+  color: #fff;
+  background: linear-gradient(120deg, #173d6d, #2563a6 70%, #3787bd);
+  box-shadow: 0 14px 36px rgba(23, 61, 109, 0.18);
+}
+
+.welcome-banner p {
+  color: #e0edff;
+}
+
+.welcome-label {
+  margin: 0 0 8px;
+  color: #5d79a0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.welcome-banner .welcome-label {
+  color: #bfdbfe;
+}
+
+.welcome-banner .dashboard-title {
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: clamp(30px, 5vw, 42px);
+  letter-spacing: -1px;
+}
+
+.welcome-icon {
+  display: grid;
+  width: 86px;
+  height: 86px;
+  flex: 0 0 86px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.13);
+  font-size: 42px;
+}
+
+.home-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.home-action {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #e1e8f1;
+  border-radius: 16px;
+  color: #142b50;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(24, 47, 78, 0.05);
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.home-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(24, 47, 78, 0.1);
+}
+
+.primary-action {
+  border-color: #c7daf5;
+  background: #f5f9ff;
+}
+
+.action-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  place-items: center;
+  border-radius: 13px;
+  color: #1d5c9d;
+  background: #e2efff;
+  font-size: 27px;
+}
+
+.secondary-action .action-icon {
+  color: #16704a;
+  background: #e2f6eb;
+}
+
+.home-action strong,
+.home-action small {
+  display: block;
+}
+
+.home-action strong {
+  font-size: 16px;
+}
+
+.home-action small {
+  margin-top: 4px;
+  color: #66768d;
+  font-size: 13px;
+}
+
+.action-arrow {
+  margin-left: auto;
+  color: #74869d;
+  font-size: 22px;
+}
+
+.dashboard-page .dashboard-stats {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 24px;
+}
+
+.dashboard-panel,
+.students-section,
+.form-section {
+  padding: 24px;
+  border: 1px solid #e1e8f1;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(24, 47, 78, 0.05);
+}
+
+.dashboard-panel h2,
+.students-section h2,
+.page-heading h2 {
+  margin: 0 0 8px;
+  color: #142b50;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.dashboard-panel > p,
+.page-heading > p:last-child {
+  color: #66768d;
+}
+
+.employee-form-page,
+.employee-cards-page,
+.about-page {
+  padding: 40px 0 90px;
+}
+
+.employees-page > header {
+  padding: 22px clamp(20px, 5vw, 64px);
+  color: #142b50;
+  background: #fff;
+  border-bottom: 1px solid #e5eaf1;
+}
+
+.employees-page > header h1 {
+  margin: 0 0 4px;
+  color: #142b50;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+
+.employees-page > header p {
+  color: #66768d;
+  font-size: 14px;
+}
+
+.page-heading {
+  margin-bottom: 22px;
+}
+
+.page-heading h2 {
+  margin-bottom: 6px;
+  font-size: 30px;
+}
+
+.form-section {
+  max-width: 620px;
+}
+
+.employee-form-page .student-form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.employee-form-page .student-form > h2 {
+  display: none;
+}
+
+.employee-form-page .form-group label {
+  color: #334155;
+}
+
+.employee-form-page .form-group input {
+  width: 100%;
+  color: #142b50;
+  background: #fff;
+}
+
+.employee-form-page .student-form button {
+  margin-top: 8px;
+  background: #1d5c9d;
+}
+
+.employee-form-page .student-form button + button {
+  margin-top: 10px;
+  background: #64748b;
+}
+
+.employee-cards-page .students-section {
+  min-width: 0;
+}
+
+.employee-cards-page .students-section input {
+  width: 100%;
+  margin: 8px 0 22px;
+}
+
+.search-label {
+  display: block;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.empty-state {
+  padding: 20px 0;
+  color: #66768d;
+}
+
+.success-message {
+  width: min(100% - 40px, 1040px);
+}
+
+.about-page {
+  color: #334155;
+}
+
+.about-page h1 {
+  margin: 0 0 12px;
+  color: #142b50;
+  font-size: clamp(32px, 5vw, 44px);
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.about-page > p:last-child {
+  max-width: 600px;
+  color: #66768d;
+}
+
+@media (max-width: 640px) {
+  .dashboard-page,
+  .employee-form-page,
+  .employee-cards-page,
+  .about-page {
+    width: min(100% - 28px, 1040px);
+  }
+
+  .dashboard-page,
+  .employee-form-page,
+  .employee-cards-page,
+  .about-page {
+    padding-top: 24px;
+  }
+
+  .home-actions,
+  .dashboard-page .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-icon {
+    width: 62px;
+    height: 62px;
+    flex-basis: 62px;
+    border-radius: 16px;
+    font-size: 31px;
+  }
+
+  .dashboard-panel,
+  .students-section,
+  .form-section {
+    padding: 18px;
+  }
+
+}
